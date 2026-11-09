@@ -163,23 +163,15 @@ lightning_logs/
 
 # ---------------------------------------------------------------------------
 # Models -- weights and serialised estimators stay out of git.
+# Everything under .models/ is ignored at any depth -- a downloaded model is a
+# whole directory (.models/embeddinggemma-2/...), not one file -- except the
+# directory markers and the DVC pointer files.
 # ---------------------------------------------------------------------------
-.models/*.pkl
-.models/*.joblib
-.models/*.h5
-.models/*.pt
-.models/*.pth
-.models/*.onnx
-.models/*.bin
-.models/*.ckpt
-.models/*.safetensors
-.models/*.model
-.models/*.npy
-.models/*.npz
-.models/*.json
-.models/*.txt
-!.models/.gitkeep
-!.models/*.dvc
+/.models/**
+!/.models/**/
+!/.models/**/.gitkeep
+!/.models/**/.gitignore
+!/.models/**/*.dvc
 
 # ---------------------------------------------------------------------------
 # Bulk data formats, wherever they land.

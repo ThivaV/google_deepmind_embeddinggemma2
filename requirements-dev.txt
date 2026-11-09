@@ -20,6 +20,9 @@ ipykernel
 ipywidgets
 jupyter
 tqdm
+# Downloads model weights from the Hugging Face Hub in the notebook. Move it to
+# requirements.txt once a pipeline stage does the download.
+huggingface_hub
 
 # --- Plotting ----------------------------------------------------------------
 matplotlib
