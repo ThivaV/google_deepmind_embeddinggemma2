@@ -1,5 +1,5 @@
 # ---------------------------------------------------------------------------
-# {{PROJECT_TITLE}} -- tunable parameters
+# Google Deepmind Embeddinggemma2 -- tunable parameters
 #
 # Everything here is an experiment knob. DVC tracks these values, so changing
 # one invalidates exactly the stages that declare it in dvc.yaml. Paths and

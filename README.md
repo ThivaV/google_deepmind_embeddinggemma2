@@ -1,12 +1,12 @@
-# {{PROJECT_TITLE}}
+# Google Deepmind Embeddinggemma2
 
-[![CI](https://github.com/{{GITHUB_REPO}}/actions/workflows/ci.yml/badge.svg)](https://github.com/{{GITHUB_REPO}}/actions/workflows/ci.yml)
+[![CI](https://github.com/ThivaV/google_deepmind_embeddinggemma2/actions/workflows/ci.yml/badge.svg)](https://github.com/ThivaV/google_deepmind_embeddinggemma2/actions/workflows/ci.yml)
 [![Python](https://img.shields.io/badge/python-3.11-blue.svg)](https://www.python.org/downloads/release/python-3110/)
 [![Licence: MIT](https://img.shields.io/badge/licence-MIT-green.svg)](LICENSE)
-[![Last commit](https://img.shields.io/github/last-commit/{{GITHUB_REPO}}.svg)](https://github.com/{{GITHUB_REPO}}/commits)
-[![Issues](https://img.shields.io/github/issues/{{GITHUB_REPO}}.svg)](https://github.com/{{GITHUB_REPO}}/issues)
+[![Last commit](https://img.shields.io/github/last-commit/ThivaV/google_deepmind_embeddinggemma2.svg)](https://github.com/ThivaV/google_deepmind_embeddinggemma2/commits)
+[![Issues](https://img.shields.io/github/issues/ThivaV/google_deepmind_embeddinggemma2.svg)](https://github.com/ThivaV/google_deepmind_embeddinggemma2/issues)
 
-{{PROJECT_DESCRIPTION}}
+Google DeepMind EmbeddingGemma2
 
 <!--
 This file is about this project: the problem it solves, the data it uses, how the
@@ -26,5 +26,5 @@ test suite are all covered in [TEMPLATE_GUIDE.md](TEMPLATE_GUIDE.md).
 
 ## Licence
 
-Released under the MIT Licence. Copyright (c) {{YEAR}} {{AUTHOR_NAME}}.
+Released under the MIT Licence. Copyright (c) 2026 ThivaV.
 See [LICENSE](LICENSE) for the full text.

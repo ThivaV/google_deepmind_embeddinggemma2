@@ -3,8 +3,8 @@
 Every pipeline stage receives one of these frozen dataclasses instead of a raw
 dictionary, so a typo in ``config/config.yaml`` fails in ``ConfigurationManager``
 rather than three stages later. They are built by
-:mod:`{{PACKAGE_NAME}}.config.configuration` and consumed by the components in
-:mod:`{{PACKAGE_NAME}}.components`.
+:mod:`google_deepmind_embeddinggemma2.config.configuration` and consumed by the components in
+:mod:`google_deepmind_embeddinggemma2.components`.
 
 Field names mirror the YAML keys they come from. Add one entity per stage as the
 pipeline grows -- ``DataValidationConfig``, ``DataTransformationConfig``,

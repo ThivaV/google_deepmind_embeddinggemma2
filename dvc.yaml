@@ -1,5 +1,5 @@
 # ---------------------------------------------------------------------------
-# {{PROJECT_TITLE}} -- DVC pipeline
+# Google Deepmind Embeddinggemma2 -- DVC pipeline
 #
 #   dvc repro                    run every stage that is out of date
 #   dvc repro model_trainer      run one stage, plus whatever it depends on
@@ -28,7 +28,7 @@ stages:
     deps:
       - main.py
       - config/config.yaml
-      - "src/{{PACKAGE_NAME}}"
+      - "src/google_deepmind_embeddinggemma2"
     outs:
       - .data/bronze/wine-quality.zip
       # Only produced when the download is an archive. If you point
@@ -42,7 +42,7 @@ stages:
     deps:
       - main.py
       - config/config.yaml
-      - "src/{{PACKAGE_NAME}}"
+      - "src/google_deepmind_embeddinggemma2"
       - .data/bronze/extracted
     params:
       - target_column
@@ -60,7 +60,7 @@ stages:
     deps:
       - main.py
       - config/config.yaml
-      - "src/{{PACKAGE_NAME}}"
+      - "src/google_deepmind_embeddinggemma2"
       - .data/silver/dataset.csv
     params:
       - random_state
@@ -79,7 +79,7 @@ stages:
     deps:
       - main.py
       - config/config.yaml
-      - "src/{{PACKAGE_NAME}}"
+      - "src/google_deepmind_embeddinggemma2"
       - .data/gold/train.csv
       - artifacts/data_transformation/preprocessor.joblib
     params:
@@ -104,7 +104,7 @@ stages:
     deps:
       - main.py
       - config/config.yaml
-      - "src/{{PACKAGE_NAME}}"
+      - "src/google_deepmind_embeddinggemma2"
       - .data/gold/test.csv
       - artifacts/data_transformation/preprocessor.joblib
       - .models/model.joblib

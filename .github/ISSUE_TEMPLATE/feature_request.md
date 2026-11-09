@@ -1,6 +1,6 @@
 ---
 name: Feature request
-about: "Suggest a capability or improvement for {{PROJECT_TITLE}}"
+about: "Suggest a capability or improvement for Google Deepmind Embeddinggemma2"
 title: "[feature] "
 labels: ["enhancement"]
 assignees: ""
@@ -17,7 +17,7 @@ assignees: ""
 
 ```python
 # optional: what using it would look like
-from {{PACKAGE_NAME}}.config import ConfigurationManager
+from google_deepmind_embeddinggemma2.config import ConfigurationManager
 ```
 
 ## Alternatives considered

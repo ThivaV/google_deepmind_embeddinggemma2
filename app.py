@@ -1,4 +1,4 @@
-"""Minimal Flask app for {{PROJECT_TITLE}}.
+"""Minimal Flask app for Google Deepmind Embeddinggemma2.
 
 Serves ``templates/index.html`` and a small JSON API::
 
@@ -10,7 +10,7 @@ Serves ``templates/index.html`` and a small JSON API::
          -d '{"features": {"alcohol": 9.4, "ph": 3.51}}'
 
 The model is loaded lazily from the path resolved by
-:class:`{{PACKAGE_NAME}}.config.configuration.ConfigurationManager` -- the same
+:class:`google_deepmind_embeddinggemma2.config.configuration.ConfigurationManager` -- the same
 ``.models/model.joblib`` that ``python main.py`` writes. Until that artifact
 exists, ``/predict`` answers 503 rather than pretending to have an answer.
 
@@ -35,8 +35,8 @@ SRC_DIR = Path(__file__).resolve().parent / "src"
 if SRC_DIR.is_dir() and str(SRC_DIR) not in sys.path:
     sys.path.insert(0, str(SRC_DIR))
 
-from {{PACKAGE_NAME}} import __version__, logger  # noqa: E402
-from {{PACKAGE_NAME}}.config import ConfigurationManager  # noqa: E402
+from google_deepmind_embeddinggemma2 import __version__, logger  # noqa: E402
+from google_deepmind_embeddinggemma2.config import ConfigurationManager  # noqa: E402
 
 app = Flask(__name__)
 
@@ -121,9 +121,9 @@ def _as_model_input(rows: list[list[float]], names: list[str]) -> Any:
 def index() -> str:
     """Render the landing page."""
     try:
-        return render_template("index.html", title="{{PROJECT_TITLE}}", version=__version__)
+        return render_template("index.html", title="Google Deepmind Embeddinggemma2", version=__version__)
     except TemplateNotFound:
-        return "<h1>{{PROJECT_TITLE}}</h1><p>Add templates/index.html to customise this page.</p>"
+        return "<h1>Google Deepmind Embeddinggemma2</h1><p>Add templates/index.html to customise this page.</p>"
 
 
 @app.get("/health")

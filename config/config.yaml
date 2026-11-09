@@ -1,13 +1,13 @@
 # ---------------------------------------------------------------------------
-# {{PROJECT_TITLE}} -- pipeline configuration
+# Google Deepmind Embeddinggemma2 -- pipeline configuration
 #
 # This file holds the *stable* wiring of the pipeline: where every stage reads
 # from and where it writes to. Anything you would tune between experiments
 # (split ratios, hyperparameters, thresholds) belongs in params.yaml instead.
 #
 # Nothing reads these keys directly. They are loaded once by
-# {{PACKAGE_NAME}}.config.configuration.ConfigurationManager, which hands each
-# stage a frozen dataclass from {{PACKAGE_NAME}}.entity. Key names therefore
+# google_deepmind_embeddinggemma2.config.configuration.ConfigurationManager, which hands each
+# stage a frozen dataclass from google_deepmind_embeddinggemma2.entity. Key names therefore
 # match the entity field names one-for-one -- rename one and you must rename the
 # other.
 #
@@ -15,7 +15,7 @@
 # behaves the same from `python main.py`, from `dvc repro`, and from a notebook.
 # ---------------------------------------------------------------------------
 
-project_name: "{{PROJECT_NAME}}"
+project_name: "google_deepmind_embeddinggemma2"
 
 # --- roots -----------------------------------------------------------------
 # artifacts_root  intermediate, reproducible stage output (safe to delete)

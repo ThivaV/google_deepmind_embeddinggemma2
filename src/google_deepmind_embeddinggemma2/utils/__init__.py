@@ -2,7 +2,7 @@
 
 Usage::
 
-    from {{PACKAGE_NAME}}.utils import read_yaml, create_directories, save_json
+    from google_deepmind_embeddinggemma2.utils import read_yaml, create_directories, save_json
 
 ``read_yaml`` returns a ``ConfigBox`` when `python-box` is installed (so you can
 write ``config.data_ingestion.root_dir``) and a plain ``dict`` otherwise. Both
@@ -24,7 +24,7 @@ try:  # optional: nicer dotted access when python-box is available
 except ImportError:  # pragma: no cover - exercised only without python-box
     ConfigBox = None
 
-from {{PACKAGE_NAME}} import logger
+from google_deepmind_embeddinggemma2 import logger
 
 __all__ = ["read_yaml", "create_directories", "save_json"]
 

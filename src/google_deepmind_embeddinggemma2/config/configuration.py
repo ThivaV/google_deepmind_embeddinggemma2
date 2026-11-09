@@ -4,14 +4,14 @@ This is the single place that knows about YAML keys and path layout. Everything
 downstream -- components, pipeline stages, notebooks -- asks the manager for a
 frozen dataclass and never touches the raw files::
 
-    from {{PACKAGE_NAME}}.config import ConfigurationManager
+    from google_deepmind_embeddinggemma2.config import ConfigurationManager
 
     manager = ConfigurationManager()
     ingestion = manager.get_data_ingestion_config()
     trainer = manager.get_model_trainer_config()
 
 Relative paths in the YAML are anchored at the repository root
-(:data:`{{PACKAGE_NAME}}.constants.PROJECT_ROOT`), so a stage resolves the same
+(:data:`google_deepmind_embeddinggemma2.constants.PROJECT_ROOT`), so a stage resolves the same
 files whether it is launched by ``python main.py``, by ``dvc repro``, or from a
 notebook in ``notebooks/``. Missing keys fall back to the documented defaults and
 log a warning instead of raising, so a half-filled config still runs.
@@ -22,15 +22,15 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Any, Mapping
 
-from {{PACKAGE_NAME}} import logger
-from {{PACKAGE_NAME}}.constants import (
+from google_deepmind_embeddinggemma2 import logger
+from google_deepmind_embeddinggemma2.constants import (
     ARTIFACTS_ROOT,
     CONFIG_FILE_PATH,
     PARAMS_FILE_PATH,
     PROJECT_ROOT,
 )
-from {{PACKAGE_NAME}}.entity import DataIngestionConfig, ModelTrainerConfig
-from {{PACKAGE_NAME}}.utils import create_directories, read_yaml
+from google_deepmind_embeddinggemma2.entity import DataIngestionConfig, ModelTrainerConfig
+from google_deepmind_embeddinggemma2.utils import create_directories, read_yaml
 
 __all__ = ["ConfigurationManager"]
 

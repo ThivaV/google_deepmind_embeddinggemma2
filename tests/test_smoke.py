@@ -1,4 +1,4 @@
-"""Smoke tests for {{PROJECT_TITLE}}.
+"""Smoke tests for Google Deepmind Embeddinggemma2.
 
 These pass on a freshly generated repository, before a single line of project
 code has been written, and they keep passing whichever flavour was bootstrapped.
@@ -20,7 +20,7 @@ import pytest
 
 # The importable package name. Written as a string so this file stays valid
 # Python both before and after the template placeholders are substituted.
-PACKAGE_NAME = "{{PACKAGE_NAME}}"
+PACKAGE_NAME = "google_deepmind_embeddinggemma2"
 
 # The directory name the template ships with, before bootstrap.py renames it.
 SENTINEL_PACKAGE = "project_name"
@@ -55,7 +55,7 @@ def package():
 
 
 def test_package_is_importable(package):
-    """Importing {{PACKAGE_NAME}} works and resolves to the expected module."""
+    """Importing google_deepmind_embeddinggemma2 works and resolves to the expected module."""
     assert package.__name__ == PACKAGE_NAME
 
 

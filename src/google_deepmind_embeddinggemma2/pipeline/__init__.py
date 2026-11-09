@@ -4,8 +4,8 @@ A component knows how to do one job; a stage knows which component to build, wha
 config to hand it, and what to log around it. Stages are what ``main.py`` and
 ``dvc.yaml`` call, which keeps both of them free of wiring detail::
 
-    from {{PACKAGE_NAME}} import logger
-    from {{PACKAGE_NAME}}.config import ConfigurationManager
+    from google_deepmind_embeddinggemma2 import logger
+    from google_deepmind_embeddinggemma2.config import ConfigurationManager
 
 
     class DataIngestionPipeline:
@@ -15,7 +15,7 @@ config to hand it, and what to log around it. Stages are what ``main.py`` and
             ...
 
 Keep stages free of real work -- if a stage grows logic worth testing on its own,
-that logic belongs in a component under :mod:`{{PACKAGE_NAME}}.components`.
+that logic belongs in a component under :mod:`google_deepmind_embeddinggemma2.components`.
 
 This package ships empty on purpose. ``main.py`` currently drives its two shipped
 stages directly through the ``STAGES`` mapping; move them here once you have more

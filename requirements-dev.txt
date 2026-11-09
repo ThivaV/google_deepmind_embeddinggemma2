@@ -1,4 +1,4 @@
-# Development dependencies for {{PROJECT_TITLE}}.
+# Development dependencies for Google Deepmind Embeddinggemma2.
 #
 # These install ON TOP OF requirements.txt -- install that one first:
 #
@@ -10,7 +10,7 @@
 # Nothing here is needed to run the pipeline or serve the Flask app in
 # production; it is the notebook, test and lint toolchain. Like
 # requirements.txt, it lists packages without versions. To import
-# {{PACKAGE_NAME}} from notebooks without any sys.path juggling, also run:
+# google_deepmind_embeddinggemma2 from notebooks without any sys.path juggling, also run:
 #
 #   pip install -e .
 

@@ -36,7 +36,7 @@ def _discover_project_root(start: Path) -> Path:
 
 _ENV_ROOT = os.environ.get("PROJECT_ROOT")
 
-#: Repository root. constants/ -> {{PACKAGE_NAME}}/ -> src/ -> root, in a checkout.
+#: Repository root. constants/ -> google_deepmind_embeddinggemma2/ -> src/ -> root, in a checkout.
 PROJECT_ROOT: Path = (
     Path(_ENV_ROOT).expanduser().resolve()
     if _ENV_ROOT

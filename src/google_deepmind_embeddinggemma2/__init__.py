@@ -1,9 +1,9 @@
-"""{{PROJECT_TITLE}} -- {{PROJECT_DESCRIPTION}}
+"""Google Deepmind Embeddinggemma2 -- Google DeepMind EmbeddingGemma2
 
 Importing this package configures the project-wide logger exactly once, so every
 module can simply do::
 
-    from {{PACKAGE_NAME}} import logger
+    from google_deepmind_embeddinggemma2 import logger
 
     logger.info("training started")
 
@@ -14,11 +14,11 @@ of failing at import time.
 
 The rest of the package is laid out as follows:
 
-* :mod:`{{PACKAGE_NAME}}.constants`   -- where ``config.yaml`` and ``params.yaml`` live
-* :mod:`{{PACKAGE_NAME}}.entity`      -- frozen dataclasses describing each stage's config
-* :mod:`{{PACKAGE_NAME}}.config`      -- ``ConfigurationManager``: YAML in, entities out
-* :mod:`{{PACKAGE_NAME}}.components`  -- the classes that do the actual work
-* :mod:`{{PACKAGE_NAME}}.utils`       -- small shared helpers
+* :mod:`google_deepmind_embeddinggemma2.constants`   -- where ``config.yaml`` and ``params.yaml`` live
+* :mod:`google_deepmind_embeddinggemma2.entity`      -- frozen dataclasses describing each stage's config
+* :mod:`google_deepmind_embeddinggemma2.config`      -- ``ConfigurationManager``: YAML in, entities out
+* :mod:`google_deepmind_embeddinggemma2.components`  -- the classes that do the actual work
+* :mod:`google_deepmind_embeddinggemma2.utils`       -- small shared helpers
 """
 
 from __future__ import annotations
@@ -29,9 +29,9 @@ import sys
 from pathlib import Path
 
 __version__ = "0.1.0"
-__author__ = "{{AUTHOR_NAME}}"
+__author__ = "ThivaV"
 
-PACKAGE_NAME = "{{PACKAGE_NAME}}"
+PACKAGE_NAME = "google_deepmind_embeddinggemma2"
 
 LOG_DIR = Path(os.environ.get("LOG_DIR", "logs"))
 LOG_FILE = LOG_DIR / "running_logs.log"

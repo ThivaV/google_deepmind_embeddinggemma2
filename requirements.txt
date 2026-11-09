@@ -1,4 +1,4 @@
-# Runtime dependencies for {{PROJECT_TITLE}}.
+# Runtime dependencies for Google Deepmind Embeddinggemma2.
 #
 # Python 3.11. Install into a virtual environment:
 #
@@ -30,7 +30,7 @@ PyYAML
 python-box
 python-dotenv
 # Runtime argument-type checking. Decorate helpers you add under
-# src/{{PACKAGE_NAME}}/utils/ with @ensure_annotations to have the declared
+# src/google_deepmind_embeddinggemma2/utils/ with @ensure_annotations to have the declared
 # types enforced instead of silently coerced.
 ensure
 

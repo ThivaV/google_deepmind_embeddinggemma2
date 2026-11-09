@@ -1,7 +1,7 @@
-"""Packaging for {{PROJECT_TITLE}}.
+"""Packaging for Google Deepmind Embeddinggemma2.
 
 The project uses a ``src/`` layout, so the importable package lives at
-``src/{{PACKAGE_NAME}}/``. Install it in editable mode while developing::
+``src/google_deepmind_embeddinggemma2/``. Install it in editable mode while developing::
 
     python -m venv .venv
     source .venv/bin/activate
@@ -20,7 +20,7 @@ from setuptools import find_packages, setup
 
 ROOT = Path(__file__).resolve().parent
 
-REPO_URL = "https://github.com/{{GITHUB_REPO}}"
+REPO_URL = "https://github.com/ThivaV/google_deepmind_embeddinggemma2"
 
 FALLBACK_VERSION = "0.1.0"
 
@@ -47,7 +47,7 @@ def read_long_description() -> str:
     readme = ROOT / "README.md"
     if readme.exists():
         return readme.read_text(encoding="utf-8")
-    return "{{PROJECT_DESCRIPTION}}"
+    return "Google DeepMind EmbeddingGemma2"
 
 
 def read_requirements(filename: str = "requirements.txt") -> list[str]:
@@ -67,11 +67,11 @@ def read_requirements(filename: str = "requirements.txt") -> list[str]:
 
 
 setup(
-    name="{{PACKAGE_NAME}}",
+    name="google_deepmind_embeddinggemma2",
     version=read_version(),
-    author="{{AUTHOR_NAME}}",
-    author_email="{{AUTHOR_EMAIL}}",
-    description="{{PROJECT_DESCRIPTION}}",
+    author="ThivaV",
+    author_email="ThivaV@users.noreply.github.com",
+    description="Google DeepMind EmbeddingGemma2",
     long_description=read_long_description(),
     long_description_content_type="text/markdown",
     url=REPO_URL,

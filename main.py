@@ -1,4 +1,4 @@
-"""Pipeline entrypoint for {{PROJECT_TITLE}}.
+"""Pipeline entrypoint for Google Deepmind Embeddinggemma2.
 
 Run the whole pipeline, or a single stage by name::
 
@@ -7,15 +7,15 @@ Run the whole pipeline, or a single stage by name::
     python main.py --list              # show the registered stages
 
 Every stage resolves its configuration through
-:class:`{{PACKAGE_NAME}}.config.configuration.ConfigurationManager`, which reads
+:class:`google_deepmind_embeddinggemma2.config.configuration.ConfigurationManager`, which reads
 ``config/config.yaml`` (paths and wiring) and ``params.yaml`` (experiment knobs).
 Nothing in here parses YAML itself.
 
 Two stages ship with the template: ``data_ingestion`` and ``model_trainer``. The
 other stages declared in ``dvc.yaml`` -- data_validation, data_transformation,
 model_evaluation -- follow the same four steps: add an entity in
-``src/{{PACKAGE_NAME}}/entity/``, a getter on ``ConfigurationManager``, a
-component in ``src/{{PACKAGE_NAME}}/components/``, then a function here plus one
+``src/google_deepmind_embeddinggemma2/entity/``, a getter on ``ConfigurationManager``, a
+component in ``src/google_deepmind_embeddinggemma2/components/``, then a function here plus one
 line in :data:`STAGES`.
 """
 
@@ -36,10 +36,10 @@ SRC_DIR = Path(__file__).resolve().parent / "src"
 if SRC_DIR.is_dir() and str(SRC_DIR) not in sys.path:
     sys.path.insert(0, str(SRC_DIR))
 
-from {{PACKAGE_NAME}} import __version__, logger  # noqa: E402
-from {{PACKAGE_NAME}}.config import ConfigurationManager  # noqa: E402
-from {{PACKAGE_NAME}}.entity import DataIngestionConfig, ModelTrainerConfig  # noqa: E402
-from {{PACKAGE_NAME}}.utils import save_json  # noqa: E402
+from google_deepmind_embeddinggemma2 import __version__, logger  # noqa: E402
+from google_deepmind_embeddinggemma2.config import ConfigurationManager  # noqa: E402
+from google_deepmind_embeddinggemma2.entity import DataIngestionConfig, ModelTrainerConfig  # noqa: E402
+from google_deepmind_embeddinggemma2.utils import save_json  # noqa: E402
 
 Stage = Callable[[ConfigurationManager], None]
 
@@ -247,7 +247,7 @@ def run_pipeline(only: str | None = None) -> None:
 def build_parser() -> argparse.ArgumentParser:
     """Build the command-line interface."""
     parser = argparse.ArgumentParser(
-        prog="main.py", description="Run the {{PROJECT_TITLE}} pipeline."
+        prog="main.py", description="Run the Google Deepmind Embeddinggemma2 pipeline."
     )
     parser.add_argument(
         "stage",
@@ -268,7 +268,7 @@ def main() -> int:
             print(name)
         return 0
 
-    logger.info("{{PROJECT_TITLE}} v%s -- starting pipeline", __version__)
+    logger.info("Google Deepmind Embeddinggemma2 v%s -- starting pipeline", __version__)
     try:
         run_pipeline(args.stage)
     except Exception:

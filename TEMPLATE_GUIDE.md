@@ -1,4 +1,4 @@
-# {{PROJECT_TITLE}} guide
+# Google Deepmind Embeddinggemma2 guide
 
 How the project is laid out and how to work on it: setup, configuration, running the
 pipeline and the app, DVC, and testing. What the project itself is about lives in
@@ -9,7 +9,7 @@ pipeline and the app, DVC, and testing. What the project itself is about lives i
 ## Project structure
 
 ```text
-{{PROJECT_NAME}}/
+google_deepmind_embeddinggemma2/
 ├── config/
 │   └── config.yaml              # paths, artefact locations, stage wiring
 ├── .data/                       # medallion data layers (DVC-tracked)
@@ -21,10 +21,10 @@ pipeline and the app, DVC, and testing. What the project itself is about lives i
 │   └── img/                     # figures used by the docs and the README
 ├── .models/                     # trained model artefacts (DVC-tracked)
 ├── notebooks/
-│   └── {{PACKAGE_NAME}}.ipynb   # exploration scratchpad
+│   └── google_deepmind_embeddinggemma2.ipynb   # exploration scratchpad
 ├── scripts/                     # one-off and operational scripts
 ├── src/
-│   └── {{PACKAGE_NAME}}/
+│   └── google_deepmind_embeddinggemma2/
 │       ├── components/          # one module per pipeline step
 │       ├── config/              # configuration manager
 │       ├── constants/           # config/params file locations
@@ -40,7 +40,7 @@ pipeline and the app, DVC, and testing. What the project itself is about lives i
 ├── dvc.yaml                     # pipeline stage definitions
 ├── requirements.txt             # runtime dependencies
 ├── requirements-dev.txt         # development and notebook dependencies
-├── setup.py                     # packaging metadata for src/{{PACKAGE_NAME}}
+├── setup.py                     # packaging metadata for src/google_deepmind_embeddinggemma2
 ├── README.md                    # what this project is, its data and its results
 ├── TEMPLATE_GUIDE.md            # this guide: layout, setup, pipeline, DVC, testing
 ├── .github/workflows/ci.yml     # lint and test on every push and pull request
@@ -87,7 +87,7 @@ installs the newest release of each package that supports Python 3.11.
 
 The importable package lives under `src/`, and both entrypoints add that directory to
 `sys.path` themselves, so a fresh clone runs without an install step. Install the
-package in editable mode when you want `import {{PACKAGE_NAME}}` to resolve from
+package in editable mode when you want `import google_deepmind_embeddinggemma2` to resolve from
 anywhere — a notebook in another directory, say:
 
 ```bash
@@ -117,7 +117,7 @@ Two YAML files drive the project, and neither of them is code:
 Stages read them through the configuration manager instead of hard-coding values:
 
 ```python
-from {{PACKAGE_NAME}}.config.configuration import ConfigurationManager
+from google_deepmind_embeddinggemma2.config.configuration import ConfigurationManager
 
 manager = ConfigurationManager()
 config = manager.get_model_trainer_config()
@@ -150,7 +150,7 @@ python main.py data_ingestion
 
 `python main.py --list` prints the stages that are currently wired up, and `--help` shows
 them too. Stages live in the `STAGES` mapping near the bottom of `main.py`; add one by
-writing a component under `src/{{PACKAGE_NAME}}/components/` and registering it there.
+writing a component under `src/google_deepmind_embeddinggemma2/components/` and registering it there.
 
 Two stages ship with the template — `data_ingestion` and `model_trainer` — while
 `dvc.yaml` declares the full five-stage graph, so `data_validation`,
@@ -229,7 +229,7 @@ Useful variations:
 pytest -v                                  # show individual test names
 pytest tests/test_smoke.py                 # a single file
 pytest -k ingestion                        # tests matching a keyword
-pytest --cov=src/{{PACKAGE_NAME}} --cov-report=term-missing
+pytest --cov=src/google_deepmind_embeddinggemma2 --cov-report=term-missing
 ```
 
 The suite ships with smoke tests that pass on a fresh checkout: they assert that the

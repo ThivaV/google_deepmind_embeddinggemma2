@@ -1,6 +1,6 @@
 ---
 name: Bug report
-about: "Report something in {{PROJECT_TITLE}} that does not behave as expected"
+about: "Report something in Google Deepmind Embeddinggemma2 that does not behave as expected"
 title: "[bug] "
 labels: ["bug", "triage"]
 assignees: ""
@@ -32,7 +32,7 @@ python main.py
 
 ## Environment
 
-- `{{PROJECT_NAME}}` version / commit:
+- `google_deepmind_embeddinggemma2` version / commit:
 - Python version: <!-- the project targets 3.11 -->
 - Operating system:
 - Installed with:
