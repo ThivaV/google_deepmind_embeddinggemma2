@@ -35,3 +35,9 @@ av
 # setuptools<81), but 2.x can't open its files.
 pymilvus>=3
 milvus-lite>=3
+
+# --- Apps (src/streamlit, src/customtkinter) ---------------------------------
+# st.file_uploader(max_upload_size=...) needs a recent Streamlit.
+streamlit>=1.50
+# Needs Python built with Tk (python.org and Anaconda have it; Homebrew: brew install python-tk).
+customtkinter

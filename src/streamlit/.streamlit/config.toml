@@ -1,0 +1,16 @@
+# Streamlit reads this when started from this folder:
+#
+#   cd src/streamlit
+#   streamlit run app.py
+
+[server]
+# Uploaded documents stay on this computer: only it can open the app.
+address = "localhost"
+
+[client]
+# No "Deploy" button: this app is meant to run locally.
+toolbarMode = "minimal"
+
+[browser]
+# Don't send usage statistics to Streamlit.
+gatherUsageStats = false
