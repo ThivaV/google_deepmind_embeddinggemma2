@@ -1,4 +1,4 @@
-# Google Deepmind Embeddinggemma2
+# Google Deepmind Embedding Gemma 2
 
 <img src="src/multimodal_search/assets/logo.svg" alt="Multimodal search logo" width="112" align="right">
 
