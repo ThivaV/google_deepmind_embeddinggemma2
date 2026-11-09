@@ -1,46 +1,37 @@
-# Runtime dependencies for Google Deepmind Embeddinggemma2.
+# Dependencies for Google Deepmind Embeddinggemma2: embedding documents, images,
+# video and audio with EmbeddingGemma 2, and searching them in Milvus Lite.
 #
-# Python 3.11. Install into a virtual environment:
+# Python 3.11+. Install into a virtual environment:
 #
 #   python -m venv .venv
 #   source .venv/bin/activate
-#   pip install -r requirements.txt
+#   pip install -r requirements.txt -r requirements-dev.txt
 #
-# Dev / notebook extras live in requirements-dev.txt and install on top of
-# this file. Keep this list to what the pipeline and the served app need at
-# runtime -- setup.py reads it as install_requires.
-#
-# Packages are listed without versions, so pip installs the newest release of
-# each one that supports Python 3.11.
+# The notebook and lint tooling lives in requirements-dev.txt. Packages are
+# listed without versions unless the code needs a minimum.
 
 # --- Core data stack ---------------------------------------------------------
 numpy
 pandas
+tqdm
 
-# --- Modelling ---------------------------------------------------------------
-scikit-learn
-# Model/preprocessor persistence. Pulled in by scikit-learn, but listed
-# explicitly because app.py imports it directly.
-joblib
+# --- EmbeddingGemma 2 --------------------------------------------------------
+huggingface_hub
+torch
+# EmbeddingGemma 2's video processor imports it.
+torchvision
+transformers
+# The model's own config asks for 6.1+: older versions ignore the order of
+# multimodal inputs.
+sentence-transformers>=6.1.0
 
-# --- Configuration & validation ----------------------------------------------
-# config/config.yaml + params.yaml are read with PyYAML and wrapped in a Box so
-# stages can use attribute access (config.data_ingestion.root_dir).
-PyYAML
-python-box
-python-dotenv
-# Runtime argument-type checking. Decorate helpers you add under
-# src/google_deepmind_embeddinggemma2/utils/ with @ensure_annotations to have the declared
-# types enforced instead of silently coerced.
-ensure
+# --- Reading .data/bronze: PDFs, images, video frames and audio --------------
+pypdfium2
+pillow
+av
 
-# --- Data & experiment versioning --------------------------------------------
-# Drives the stages declared in dvc.yaml. Add the extra for your remote when
-# you configure one, e.g. dvc[s3] or dvc[gs].
-dvc
-
-# --- Serving -----------------------------------------------------------------
-Flask
-# Pulled in by Flask, but listed explicitly because app.py imports
-# jinja2.TemplateNotFound directly.
-Jinja2
+# --- Vector database (.data/gold/db/) ----------------------------------------
+# Milvus Lite 3.x is faiss + pyarrow, so it installs on macOS too (2.x needed
+# setuptools<81), but 2.x can't open its files.
+pymilvus>=3
+milvus-lite>=3

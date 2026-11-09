@@ -1,60 +1,18 @@
-# Development dependencies for Google Deepmind Embeddinggemma2.
+# Notebook and lint tooling for Google Deepmind Embeddinggemma2. Installs on top
+# of requirements.txt:
 #
-# These install ON TOP OF requirements.txt -- install that one first:
-#
-#   python -m venv .venv
-#   source .venv/bin/activate
-#   pip install -r requirements.txt
-#   pip install -r requirements-dev.txt
-#
-# Nothing here is needed to run the pipeline or serve the Flask app in
-# production; it is the notebook, test and lint toolchain. Like
-# requirements.txt, it lists packages without versions. To import
-# google_deepmind_embeddinggemma2 from notebooks without any sys.path juggling, also run:
-#
-#   pip install -e .
+#   pip install -r requirements.txt -r requirements-dev.txt
 
 # --- Notebooks & interactive work --------------------------------------------
 ipython
 ipykernel
 ipywidgets
 jupyter
-tqdm
-
-# --- EmbeddingGemma 2 (notebook) ---------------------------------------------
-# Move these to requirements.txt once a pipeline stage downloads the model and
-# generates the embeddings.
-huggingface_hub
-torch
-# EmbeddingGemma 2's video processor imports it.
-torchvision
-transformers
-# The model's own config asks for 6.1+: older versions ignore the order of
-# multimodal inputs.
-sentence-transformers>=6.1.0
-# Reading .data/bronze: PDF pages and text, video frames and audio.
-pypdfium2
-av
-# The vector database in .data/gold/db/. Milvus Lite 3.x is faiss + pyarrow, so it
-# installs on macOS too (2.x needed setuptools<81), but 2.x can't open its files.
-pymilvus>=3
-milvus-lite>=3
 
 # --- Plotting ----------------------------------------------------------------
 matplotlib
 seaborn
 
-# --- Testing -----------------------------------------------------------------
-pytest
-pytest-cov
-
 # --- Linting & formatting ----------------------------------------------------
 ruff
 black
-
-# --- Also used from notebooks (already runtime deps) -------------------------
-# Repeated so this file describes a complete analysis environment on its own.
-numpy
-pandas
-python-dotenv
-python-box

@@ -40,21 +40,6 @@ MANIFEST
 pip-log.txt
 pip-delete-this-directory.txt
 
-# ---------------------------------------------------------------------------
-# Unit test / coverage reports
-# ---------------------------------------------------------------------------
-htmlcov/
-.tox/
-.nox/
-.coverage
-.coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*.cover
-*.py,cover
-.hypothesis/
-.pytest_cache/
 cover/
 
 # ---------------------------------------------------------------------------
@@ -90,12 +75,10 @@ profile_default/
 ipython_config.py
 
 # ---------------------------------------------------------------------------
-# Environments and interpreter pins
-# Real secrets stay local; the documented example stays in git.
+# Environments and interpreter pins -- local secrets (.env, .env.local) stay out of git.
 # ---------------------------------------------------------------------------
 .env
 .env.*
-!.env.example
 .envrc
 .venv
 venv/
@@ -144,34 +127,24 @@ wandb/
 catboost_info/
 lightning_logs/
 
-# DVC local state. The tracked config, dvc.yaml, dvc.lock and *.dvc files stay.
-.dvc/tmp
-.dvc/cache
-.dvc/config.local
-
 # ---------------------------------------------------------------------------
-# Data -- versioned with DVC, not with git.
-# Everything under .data/ is ignored except the directory markers and the DVC
-# pointer files that describe how to fetch the real thing.
+# Data -- documents, embeddings and the vector database stay out of git.
+# Everything under .data/ is ignored except the directory markers.
 # ---------------------------------------------------------------------------
 /.data/**
 !/.data/**/
 !/.data/**/.gitkeep
-!/.data/**/.gitignore
-!/.data/**/*.dvc
 !/.data/**/README.md
 
 # ---------------------------------------------------------------------------
-# Models -- weights and serialised estimators stay out of git.
+# Models -- weights stay out of git.
 # Everything under .models/ is ignored at any depth -- a downloaded model is a
 # whole directory (.models/embeddinggemma-2/...), not one file -- except the
-# directory markers and the DVC pointer files.
+# directory markers.
 # ---------------------------------------------------------------------------
 /.models/**
 !/.models/**/
 !/.models/**/.gitkeep
-!/.models/**/.gitignore
-!/.models/**/*.dvc
 
 # ---------------------------------------------------------------------------
 # Bulk data formats, wherever they land.
