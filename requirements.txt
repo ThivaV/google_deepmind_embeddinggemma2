@@ -1,0 +1,46 @@
+# Runtime dependencies for {{PROJECT_TITLE}}.
+#
+# Python 3.11. Install into a virtual environment:
+#
+#   python -m venv .venv
+#   source .venv/bin/activate
+#   pip install -r requirements.txt
+#
+# Dev / notebook extras live in requirements-dev.txt and install on top of
+# this file. Keep this list to what the pipeline and the served app need at
+# runtime -- setup.py reads it as install_requires.
+#
+# Packages are listed without versions, so pip installs the newest release of
+# each one that supports Python 3.11.
+
+# --- Core data stack ---------------------------------------------------------
+numpy
+pandas
+
+# --- Modelling ---------------------------------------------------------------
+scikit-learn
+# Model/preprocessor persistence. Pulled in by scikit-learn, but listed
+# explicitly because app.py imports it directly.
+joblib
+
+# --- Configuration & validation ----------------------------------------------
+# config/config.yaml + params.yaml are read with PyYAML and wrapped in a Box so
+# stages can use attribute access (config.data_ingestion.root_dir).
+PyYAML
+python-box
+python-dotenv
+# Runtime argument-type checking. Decorate helpers you add under
+# src/{{PACKAGE_NAME}}/utils/ with @ensure_annotations to have the declared
+# types enforced instead of silently coerced.
+ensure
+
+# --- Data & experiment versioning --------------------------------------------
+# Drives the stages declared in dvc.yaml. Add the extra for your remote when
+# you configure one, e.g. dvc[s3] or dvc[gs].
+dvc
+
+# --- Serving -----------------------------------------------------------------
+Flask
+# Pulled in by Flask, but listed explicitly because app.py imports
+# jinja2.TemplateNotFound directly.
+Jinja2

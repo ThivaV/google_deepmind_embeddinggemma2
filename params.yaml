@@ -1,0 +1,84 @@
+# ---------------------------------------------------------------------------
+# {{PROJECT_TITLE}} -- tunable parameters
+#
+# Everything here is an experiment knob. DVC tracks these values, so changing
+# one invalidates exactly the stages that declare it in dvc.yaml. Paths and
+# other fixed wiring belong in config/config.yaml, not here.
+#
+#   dvc params diff        what changed since the last run
+#   dvc exp run -S model_trainer.random_forest.max_depth=8
+#   dvc exp show           compare the runs
+# ---------------------------------------------------------------------------
+
+# --- shared ----------------------------------------------------------------
+# Read by ConfigurationManager and passed to every stage that needs them.
+random_state: 42
+target_column: quality
+n_jobs: -1
+
+# --- Stage 2: how strict the raw-data checks are ---------------------------
+# `fail_on_error: true` stops the pipeline; false only writes the report.
+data_validation:
+  min_rows: 100
+  min_columns: 2
+  max_missing_fraction: 0.1
+  max_duplicate_fraction: 0.25
+  fail_on_error: true
+
+# --- Stage 3: splitting and preprocessing ----------------------------------
+data_transformation:
+  test_size: 0.2
+  shuffle: true
+  stratify: true
+  drop_duplicates: true
+  impute_strategy: median          # mean | median | most_frequent
+  scaler: standard                 # standard | minmax | robust | none
+  variance_threshold: 0.0
+
+# --- Stage 4: estimator choice and hyperparameters -------------------------
+# `model_type` picks which block below is expanded into the estimator's
+# keyword arguments, so you can switch models without touching any code.
+model_trainer:
+  model_type: random_forest        # random_forest | gradient_boosting | logistic_regression
+
+  random_forest:
+    n_estimators: 400
+    criterion: gini
+    max_depth: 16
+    min_samples_split: 4
+    min_samples_leaf: 2
+    max_features: sqrt
+    class_weight: balanced_subsample
+    bootstrap: true
+
+  gradient_boosting:
+    n_estimators: 250
+    learning_rate: 0.05
+    max_depth: 3
+    subsample: 0.9
+    min_samples_split: 4
+    min_samples_leaf: 5
+
+  logistic_regression:
+    C: 1.0
+    penalty: l2
+    solver: lbfgs
+    max_iter: 1000
+
+  cross_validation:
+    enabled: true
+    folds: 5
+    scoring: f1_weighted
+
+# --- Stage 5: what gets measured, and the bar the model must clear ---------
+# The run fails if `primary_metric` comes in under `min_primary_metric`.
+model_evaluation:
+  average: weighted
+  metrics:
+    - accuracy
+    - precision_weighted
+    - recall_weighted
+    - f1_weighted
+  primary_metric: f1_weighted
+  min_primary_metric: 0.55
+  save_confusion_matrix: true

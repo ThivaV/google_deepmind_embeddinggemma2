@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{PROJECT_TITLE}}</title>
+  <style>
+    :root {
+      --bg: #f4f6fb;
+      --card: #ffffff;
+      --ink: #16181d;
+      --muted: #5c6373;
+      --line: #dfe3ec;
+      --accent: #2f5bea;
+      --accent-ink: #ffffff;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #12141a;
+        --card: #1b1e26;
+        --ink: #eef0f5;
+        --muted: #9aa2b4;
+        --line: #2b303c;
+        --accent: #6d8dff;
+        --accent-ink: #0f1116;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1rem;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.5;
+    }
+
+    main {
+      width: 100%;
+      max-width: 34rem;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 2rem;
+      box-shadow: 0 12px 32px rgba(15, 20, 40, 0.08);
+    }
+
+    h1 {
+      margin: 0 0 0.25rem;
+      font-size: 1.6rem;
+      letter-spacing: -0.01em;
+    }
+
+    p.lead {
+      margin: 0 0 1.75rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    fieldset {
+      margin: 0;
+      padding: 0;
+      border: 0;
+    }
+
+    legend {
+      padding: 0;
+      margin-bottom: 0.9rem;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .field {
+      margin-bottom: 1.1rem;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.35rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--muted);
+    }
+
+    input {
+      width: 100%;
+      padding: 0.7rem 0.85rem;
+      font: inherit;
+      color: var(--ink);
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+
+    input:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 1px;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 0.5rem;
+      padding: 0.8rem 1rem;
+      font: inherit;
+      font-weight: 600;
+      color: var(--accent-ink);
+      background: var(--accent);
+      border: 0;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      filter: brightness(1.08);
+    }
+
+    footer {
+      margin-top: 1.5rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+
+    footer p {
+      margin: 0 0 0.5rem;
+    }
+
+    footer p:last-child {
+      margin-bottom: 0;
+    }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.78rem;
+      padding: 0.1rem 0.3rem;
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>{{PROJECT_TITLE}}</h1>
+    <p class="lead">{{PROJECT_DESCRIPTION}}</p>
+
+    <form action="/predict" method="post">
+      <fieldset>
+        <legend>Model input</legend>
+
+        <div class="field">
+          <label for="feature_1">Feature 1</label>
+          <input type="number" step="any" id="feature_1" name="feature_1" placeholder="0.0" required>
+        </div>
+
+        <div class="field">
+          <label for="feature_2">Feature 2</label>
+          <input type="number" step="any" id="feature_2" name="feature_2" placeholder="0.0" required>
+        </div>
+
+        <div class="field">
+          <label for="feature_3">Feature 3</label>
+          <input type="number" step="any" id="feature_3" name="feature_3" placeholder="0.0" required>
+        </div>
+
+        <button type="submit">Predict</button>
+      </fieldset>
+    </form>
+
+    <footer>
+      <p>
+        These three fields are placeholders. Rename them to the feature names your model was
+        trained on: <code>/predict</code> in <code>app.py</code> already reads this form post and
+        reorders named values to match the estimator's own feature order, so a name it does not
+        recognise comes back as a 400 saying which feature is missing.
+      </p>
+      <p>
+        The endpoint replies with JSON rather than re-rendering this page. To show the prediction
+        here instead, have <code>/predict</code> return <code>render_template</code> and add a spot
+        for it below. Either way a trained model has to exist first, so run
+        <code>python main.py</code> before submitting.
+      </p>
+    </footer>
+  </main>
+</body>
+</html>

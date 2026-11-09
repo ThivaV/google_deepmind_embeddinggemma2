@@ -1,0 +1,125 @@
+# ---------------------------------------------------------------------------
+# {{PROJECT_TITLE}} -- DVC pipeline
+#
+#   dvc repro                    run every stage that is out of date
+#   dvc repro model_trainer      run one stage, plus whatever it depends on
+#   dvc dag                      draw the stage graph
+#   dvc metrics show             print the evaluation metrics
+#   dvc plots show               render the plots below
+#
+# Every path here mirrors config/config.yaml and every `params` entry mirrors
+# params.yaml -- change a value in either file and DVC reruns exactly the
+# stages affected by it.
+#
+# Each stage name must also be a key of STAGES in main.py, which is what
+# `python main.py <stage>` dispatches on. The template ships two implemented
+# stages, data_ingestion and model_trainer. data_validation, data_transformation
+# and model_evaluation are wired up here so the intended shape of the pipeline
+# is explicit, but they are not registered in main.py yet -- implement each one
+# (entity, ConfigurationManager getter, component, stage function, one line in
+# STAGES) and `dvc repro` runs end to end. Until then, reproduce the implemented
+# stages directly, e.g. `dvc repro data_ingestion`.
+# ---------------------------------------------------------------------------
+
+stages:
+  # Stage 1 -- download the source archive into bronze and unpack it there.
+  data_ingestion:
+    cmd: python main.py data_ingestion
+    deps:
+      - main.py
+      - config/config.yaml
+      - "src/{{PACKAGE_NAME}}"
+    outs:
+      - .data/bronze/wine-quality.zip
+      # Only produced when the download is an archive. If you point
+      # data_ingestion.source_url at a plain CSV, drop this line -- DVC fails a
+      # stage whose declared output was never created.
+      - .data/bronze/extracted
+
+  # Stage 2 -- schema-check the bronze file and write the cleaned dataset to silver.
+  data_validation:
+    cmd: python main.py data_validation
+    deps:
+      - main.py
+      - config/config.yaml
+      - "src/{{PACKAGE_NAME}}"
+      - .data/bronze/extracted
+    params:
+      - target_column
+      - data_validation
+    outs:
+      - .data/silver/dataset.csv
+      - artifacts/data_validation/report.json:
+          cache: false
+      - artifacts/data_validation/status.json:
+          cache: false
+
+  # Stage 3 -- split silver into gold train/test files; fit the preprocessor on train.
+  data_transformation:
+    cmd: python main.py data_transformation
+    deps:
+      - main.py
+      - config/config.yaml
+      - "src/{{PACKAGE_NAME}}"
+      - .data/silver/dataset.csv
+    params:
+      - random_state
+      - target_column
+      - data_transformation
+    outs:
+      - .data/gold/train.csv
+      - .data/gold/test.csv
+      - artifacts/data_transformation/preprocessor.joblib
+      - artifacts/data_transformation/summary.json:
+          cache: false
+
+  # Stage 4 -- train the estimator selected in params.yaml.
+  model_trainer:
+    cmd: python main.py model_trainer
+    deps:
+      - main.py
+      - config/config.yaml
+      - "src/{{PACKAGE_NAME}}"
+      - .data/gold/train.csv
+      - artifacts/data_transformation/preprocessor.joblib
+    params:
+      - random_state
+      - target_column
+      - n_jobs
+      - model_trainer
+    outs:
+      - .models/model.joblib
+      - artifacts/model_trainer/training_summary.json:
+          cache: false
+    plots:
+      - artifacts/model_trainer/feature_importance.csv:
+          cache: false
+          template: bar_horizontal
+          x: importance
+          y: feature
+
+  # Stage 5 -- score the model on the held-out split.
+  model_evaluation:
+    cmd: python main.py model_evaluation
+    deps:
+      - main.py
+      - config/config.yaml
+      - "src/{{PACKAGE_NAME}}"
+      - .data/gold/test.csv
+      - artifacts/data_transformation/preprocessor.joblib
+      - .models/model.joblib
+    params:
+      - target_column
+      - model_evaluation
+    metrics:
+      - artifacts/model_evaluation/metrics.json:
+          cache: false
+    outs:
+      - artifacts/model_evaluation/classification_report.json:
+          cache: false
+    plots:
+      - artifacts/model_evaluation/predictions.csv:
+          cache: false
+          template: confusion
+          x: actual
+          y: predicted

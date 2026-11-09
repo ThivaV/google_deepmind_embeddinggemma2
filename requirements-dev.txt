@@ -1,0 +1,41 @@
+# Development dependencies for {{PROJECT_TITLE}}.
+#
+# These install ON TOP OF requirements.txt -- install that one first:
+#
+#   python -m venv .venv
+#   source .venv/bin/activate
+#   pip install -r requirements.txt
+#   pip install -r requirements-dev.txt
+#
+# Nothing here is needed to run the pipeline or serve the Flask app in
+# production; it is the notebook, test and lint toolchain. Like
+# requirements.txt, it lists packages without versions. To import
+# {{PACKAGE_NAME}} from notebooks without any sys.path juggling, also run:
+#
+#   pip install -e .
+
+# --- Notebooks & interactive work --------------------------------------------
+ipython
+ipykernel
+ipywidgets
+jupyter
+tqdm
+
+# --- Plotting ----------------------------------------------------------------
+matplotlib
+seaborn
+
+# --- Testing -----------------------------------------------------------------
+pytest
+pytest-cov
+
+# --- Linting & formatting ----------------------------------------------------
+ruff
+black
+
+# --- Also used from notebooks (already runtime deps) -------------------------
+# Repeated so this file describes a complete analysis environment on its own.
+numpy
+pandas
+python-dotenv
+python-box

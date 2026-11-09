@@ -1,0 +1,198 @@
+# ---------------------------------------------------------------------------
+# Byte-compiled / optimized / DLL files
+# ---------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# ---------------------------------------------------------------------------
+# Distribution / packaging
+# ---------------------------------------------------------------------------
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# ---------------------------------------------------------------------------
+# Installer / packaging logs
+# ---------------------------------------------------------------------------
+pip-log.txt
+pip-delete-this-directory.txt
+
+# ---------------------------------------------------------------------------
+# Unit test / coverage reports
+# ---------------------------------------------------------------------------
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+cover/
+
+# ---------------------------------------------------------------------------
+# Translations
+# ---------------------------------------------------------------------------
+*.mo
+*.pot
+
+# ---------------------------------------------------------------------------
+# Django / Flask / Scrapy
+# ---------------------------------------------------------------------------
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+instance/
+.webassets-cache
+.scrapy
+
+# ---------------------------------------------------------------------------
+# Documentation builds
+# ---------------------------------------------------------------------------
+docs/_build/
+/site
+.pybuilder/
+target/
+
+# ---------------------------------------------------------------------------
+# Jupyter / IPython
+# ---------------------------------------------------------------------------
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+profile_default/
+ipython_config.py
+
+# ---------------------------------------------------------------------------
+# Environments and interpreter pins
+# Real secrets stay local; the documented example stays in git.
+# ---------------------------------------------------------------------------
+.env
+.env.*
+!.env.example
+.envrc
+.venv
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+.python-version
+
+# ---------------------------------------------------------------------------
+# Type checkers, linters and other tool caches
+# ---------------------------------------------------------------------------
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.pyre/
+.pytype/
+.ruff_cache/
+cython_debug/
+
+# ---------------------------------------------------------------------------
+# Editors and operating systems
+# ---------------------------------------------------------------------------
+.DS_Store
+.AppleDouble
+.LSOverride
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# ---------------------------------------------------------------------------
+# Logs and local run output
+# ---------------------------------------------------------------------------
+*.log
+logs/
+artifacts/
+outputs/
+mlruns/
+mlartifacts/
+wandb/
+catboost_info/
+lightning_logs/
+
+# DVC local state. The tracked config, dvc.yaml, dvc.lock and *.dvc files stay.
+.dvc/tmp
+.dvc/cache
+.dvc/config.local
+
+# ---------------------------------------------------------------------------
+# Data -- versioned with DVC, not with git.
+# Everything under .data/ is ignored except the directory markers and the DVC
+# pointer files that describe how to fetch the real thing.
+# ---------------------------------------------------------------------------
+/.data/**
+!/.data/**/
+!/.data/**/.gitkeep
+!/.data/**/.gitignore
+!/.data/**/*.dvc
+!/.data/**/README.md
+
+# ---------------------------------------------------------------------------
+# Models -- weights and serialised estimators stay out of git.
+# ---------------------------------------------------------------------------
+.models/*.pkl
+.models/*.joblib
+.models/*.h5
+.models/*.pt
+.models/*.pth
+.models/*.onnx
+.models/*.bin
+.models/*.ckpt
+.models/*.safetensors
+.models/*.model
+.models/*.npy
+.models/*.npz
+.models/*.json
+.models/*.txt
+!.models/.gitkeep
+!.models/*.dvc
+
+# ---------------------------------------------------------------------------
+# Bulk data formats, wherever they land.
+# Committing a small fixture on purpose? Force it:
+#   git add -f tests/fixtures/sample.csv
+# ---------------------------------------------------------------------------
+*.csv
+*.tsv
+*.parquet
+*.feather
+*.avro
+*.orc
+*.db
+*.sqlite
+*.h5
+*.hdf5
