@@ -87,6 +87,30 @@ QuickTime Player at the matching moment (macOS asks once to allow that).
 
 ---
 
+## References
+
+**EmbeddingGemma 2**
+
+- [google/embeddinggemma-2](https://huggingface.co/google/embeddinggemma-2) — the model card on
+  Hugging Face: architecture, benchmarks, task prompts and usage.
+- [EmbeddingGemma 2 is a best-in-class open model for natively multimodal embeddings](https://blog.google/innovation-and-ai/technology/developers-tools/embeddinggemma-2/)
+  — Google's launch post.
+- [Google releases EmbeddingGemma 2](https://lnkd.in/p/eCkQXwiu) — Daniel Han on LinkedIn.
+
+**Unsloth**
+
+- [EmbeddingGemma 2 - Run Locally](https://unsloth.ai/docs/models/embeddinggemma-2) — Unsloth's
+  documentation.
+- [unsloth/embeddinggemma-2-GGUF](https://huggingface.co/unsloth/embeddinggemma-2-GGUF) — GGUF
+  builds of the model on Hugging Face.
+
+**The first EmbeddingGemma**
+
+- [Introducing EmbeddingGemma: The Best-in-Class Open Model for On-Device Embeddings](https://developers.googleblog.com/en/introducing-embeddinggemma/)
+  — Google Developers Blog.
+
+---
+
 ## Licence
 
 Released under the MIT Licence. Copyright (c) 2026 ThivaV.
